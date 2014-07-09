@@ -1,0 +1,125 @@
+
+import java.util.Random;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Lucho
+ */
+public class Tenis {
+    
+    String j1="Jugador 1";
+    String j2="Jugador 2";
+    int p1=0;
+    int p2=0;
+    int a=0;
+    int b=0;
+    int limite=1;
+    int scor[];
+    
+    public void point (){
+        Random r = new Random();
+        if(a==40 && b==40){
+           System.out.println("Dauce");
+            if (r.nextInt(limite+1)==0){
+                 System.out.println("Advantager Jugador 1");
+            }
+            else{
+                System.out.println("Advantager Jugador 2");
+        }
+         if (r.nextInt(limite+1)==0){
+                 System.out.println("Jugador 1 Win");
+            }
+            else{
+                System.out.println("Jugador 2 Win");
+        }  
+        }
+        
+        else{
+        if(a==0 && b==0){
+        System.out.println("Love-All");
+        }
+           if (r.nextInt(limite+1)==0){
+            if(a==40){
+                System.out.println("Jugador 1 win"); 
+            } 
+            else{
+            if(a==30){
+            a = puntoFinal(a);
+          System.out.println(j1+" "+a+"-"+b+"  "+j2); 
+            }
+            else{
+                 a = puntoNormal(a);
+                 System.out.println(j1+" "+a+"-"+b+"  "+j2); 
+            }
+            }
+        }
+
+        else{
+            if(b==40){
+                System.out.println("Jugador 2 win");
+            }
+            else{
+            if(b==30){
+          b = puntoFinal(b);
+          System.out.println(j1+"  "+a+"-"+b+"  "+j2);   
+            }
+            else{
+                 b = puntoNormal(b);
+                 System.out.println(j1+" "+a+"-"+b+"  "+j2); 
+            }
+        }
+        }
+        }
+    } 
+    
+    public void score(){
+        Tenis p = new Tenis();
+        p.point();
+    }
+    
+    public int puntoNormal(int a){
+        a=a+15;
+        return a;
+    }
+    
+    public int puntoFinal(int a){
+        a=a+10;
+        return a;
+    }
+    
+    public static void main(String [] arg){
+        Tenis partido=new Tenis();
+        
+        int op=0;
+        do{
+            op=Integer.parseInt(JOptionPane.showInputDialog(
+            "Partido de Tenis"+"\n"+
+            "Ingresa una opcion:"+"\n"+
+            "[1] Inicia el juego"+"\n"+
+            "[2] Siguiente punto"+"\n"+
+            "[3] Temina juego" ));
+            
+            switch(op)
+            {
+                case 1: partido.point();
+                    break;
+                case 2: partido.point();
+                    break;
+                case 3: System.exit(3);
+                    break;
+                             
+            }
+        }while(op!=3);
+                    
+            
+    }
+    
+}
